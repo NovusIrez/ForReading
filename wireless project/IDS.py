@@ -37,10 +37,10 @@ def action(msg):
     if 'off' in command:
         CONSTLOOP = 0
         
+MessageLoop(telegram_bot, action).run_as_thread()
 
 while CONSTLOOP:
     print(not GPIO.input(12)) 
-    GPIO.output(32,not GPIO.input(12))
-    GPIO.output(36,not GPIO.input(12))
+    GPIO.output(b,not GPIO.input(12))
+    GPIO.output(c,not GPIO.input(12))
 
-MessageLoop(telegram_bot, action).run_as_thread()
