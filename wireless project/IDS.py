@@ -1,4 +1,4 @@
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 import telepot
 from telepot.loop import MessageLoop
@@ -33,9 +33,11 @@ def action(msg):
     
     if 'on' in command:
         CONSTLOOP = 1
+        telegram_bot.sendMessage(chat_id,'Turned On')
 
     if 'off' in command:
         CONSTLOOP = 0
+        telegram_bot.sendMessage(chat_id,'Turned Off')
         
 MessageLoop(telegram_bot, action).run_as_thread()
 
