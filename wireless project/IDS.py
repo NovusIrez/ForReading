@@ -3,7 +3,7 @@ import time
 import telepot
 from telepot.loop import MessageLoop
 
-telegram_bot = telepot.Bot('')
+telegram_bot = telepot.Bot('5901069952:AAGtcDjItEQKsstD6ulccGV1kzMVTXOfwbg')
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
