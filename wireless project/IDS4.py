@@ -23,7 +23,7 @@ def action(msg):
 
     global running
 
-    if 'help' in command or 'start' in command:
+    if 'help' or 'start' in command:
         message = """\
                 Hi there
                 Commands:
