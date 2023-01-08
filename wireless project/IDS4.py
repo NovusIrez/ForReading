@@ -48,12 +48,12 @@ state = False
 
 while True:
     if running:
-        output = not GPIO.input(12)
-        print(output)
-        GPIO.output(c, output)
-        if state != output:
-            state = output
-            if state:
+        inputSensor = not GPIO.input(a) #Input from sensor
+        print(inputSensor)
+        GPIO.output(c, inputSensor) #Output to buzzer
+        if state != inputSensor: #Check for different input
+            state = inputSensor
+            if state: #If state is true once output Telegram message
                 telegram_bot.sendMessage(chat_id,'Intruder detected!')
     else:
         print('waiting for start command...')
