@@ -8,13 +8,11 @@ telegram_bot = telepot.Bot('5901069952:AAGtcDjItEQKsstD6ulccGV1kzMVTXOfwbg')
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
-a = 12 # IR sensor
-#b = 32
+a = 12 # IR Sensor
 c = 36 # Buzzer
 
-GPIO.setup(a,GPIO.IN)
-#GPIO.setup(b,GPIO.OUT)
-GPIO.setup(c,GPIO.OUT)
+GPIO.setup(a,GPIO.IN) # Receive input from IR sensor
+GPIO.setup(c,GPIO.OUT) # Output to buzzer
 
 running = False
 
@@ -50,13 +48,13 @@ state = False
 
 while True:
     if running:
-        output = not GPIO.input(12)
-        print(output)
-        GPIO.output(c, output)
-        if state != output:
-            state = output
-            if state:
+        inputSensor = not GPIO.input(a) #Input from sensor
+        print(inputSensor)
+        GPIO.output(c, inputSensor)     #Output to buzzer
+        if state != inputSensor:        #Check for different input
+            state = inputSensor
+            if state:                   #If state is true once output Telegram message
                 telegram_bot.sendMessage(chat_id,'Intruder detected!')
     else:
-        GPIO.output(c, False)
+        GPIO.output(c, False)           #Turn off buzzer
         print('waiting for start command...')
