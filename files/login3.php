@@ -6,8 +6,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 // username and password sent from Form
 echo $_POST['txtun'];
 
-$myusername=mysqli_real_escape_string($conn,$_POST['txtun']); 
-$mypassword=mysqli_real_escape_string($conn,$_POST['txtpass']); 
 $passwordSecure= hash('sha256', $mypassword);
 $sql="SELECT id,level FROM login WHERE username='$myusername' and password='$passwordSecure'";
 $result=mysqli_query($conn,$sql);
